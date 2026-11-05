@@ -102,9 +102,9 @@ section{padding-block:104px}
 .hero-photo{position:absolute;inset:0;z-index:-3;overflow:hidden}
 .slide{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;opacity:0;transform:scale(1.12);transition:opacity 1.6s ease,transform 9s linear}
 .slide.on{opacity:1;transform:scale(1)}
-.s1{background-image:url("img/portrait.webp");background-position:72% 30%}
-.s2{background-image:url("img/adv.webp");background-position:70% 40%}
-.s3{background-image:url("img/ic.webp");background-position:65% 40%}
+.s1{background-image:url("img/takim.webp");background-position:60% 25%}
+.s2{background-image:url("img/anlatim.webp");background-position:55% 25%}
+.s3{background-image:url("img/toplanti.webp");background-position:50% 30%}
 .dots{position:absolute;right:max(18px,env(safe-area-inset-right,0px));bottom:28px;display:flex;gap:8px;z-index:2}
 .dots button{all:unset;cursor:pointer;width:34px;height:4px;border-radius:4px;background:rgba(255,255,255,.25);overflow:hidden;position:relative}
 .dots button::after{content:"";position:absolute;inset:0;background:var(--teal);transform:scaleX(0);transform-origin:left}
@@ -247,7 +247,7 @@ section{padding-block:104px}
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
-.ph{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:url("img/office2.webp") 47% 30%/auto 118% no-repeat var(--navy-2)}
+.ph{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:url("img/takim.webp") 50% 20%/cover no-repeat var(--navy-2)}
 .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,27,44,.85),transparent 45%)}
 .ph figcaption{position:absolute;left:24px;bottom:22px;z-index:1;color:var(--on-navy)}
 .ph figcaption b{display:block;font-family:var(--f-display);font-size:30px;font-weight:400}
@@ -284,9 +284,9 @@ section{padding-block:104px}
 .post h3{font-size:26px;margin-top:6px}
 .post.big h3{font-size:clamp(30px,3.4vw,40px)}
 .post p{color:var(--on-navy-soft);font-size:15px;margin-top:8px;max-width:52ch}
-.bg1{background:url("img/adv.webp") 70% 40%/cover no-repeat #0C2A44}
+.bg1{background:url("img/anlatim.webp") 45% 25%/cover no-repeat #0C2A44}
 .bg2{background:radial-gradient(circle at 85% 15%,rgba(225,182,91,.55) 0,transparent 45%),url("img/portrait.webp") 52% 30%/cover no-repeat #123A5C}
-.bg3{background:url("img/ic.webp") 50% 40%/cover no-repeat #0C2A44}
+.bg3{background:url("img/toplanti.webp") 50% 30%/cover no-repeat #0C2A44}
 .post .bars{position:absolute;right:28px;top:60px;display:flex;gap:8px;align-items:flex-end;height:110px;z-index:-1;opacity:.55}
 .post .bars i{width:16px;background:var(--teal);border-radius:4px 4px 0 0;animation:grow 2.4s var(--ease) infinite alternate}
 .post .bars i:nth-child(1){height:40%}.post .bars i:nth-child(2){height:65%;animation-delay:.2s}.post .bars i:nth-child(3){height:50%;animation-delay:.4s}.post .bars i:nth-child(4){height:85%;animation-delay:.6s}.post .bars i:nth-child(5){height:100%;animation-delay:.8s}
@@ -406,9 +406,9 @@ footer h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-tra
 <main id="icerik">
 <section class="hero">
   <div class="hero-photo" id="slides">
-    <div class="slide s1 on" role="img" aria-label="Serkan Kaplan, Karşıyaka ofisindeki çalışma masasında"></div>
-    <div class="slide s2" role="img" aria-label="Finansal raporlar üzerinde mali danışmanlık çalışması"></div>
-    <div class="slide s3" role="img" aria-label="Muhasebe kayıtlarının çok aşamalı kontrolü"></div>
+    <div class="slide s1 on" role="img" aria-label="Serkan Kaplan, takım elbiseyle Karşıyaka ofisindeki çalışma masasında"></div>
+    <div class="slide s2" role="img" aria-label="Serkan Kaplan, toplantıda mali tabloları anlatırken"></div>
+    <div class="slide s3" role="img" aria-label="Serkan Kaplan, ekibiyle toplantıda"></div>
   </div>
   <div class="dots" id="dots" aria-label="Fotoğraf seçimi"><button class="on" aria-label="1. fotoğraf"></button><button aria-label="2. fotoğraf"></button><button aria-label="3. fotoğraf"></button></div>
   <canvas id="flow" aria-hidden="true"></canvas>
