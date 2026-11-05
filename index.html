@@ -116,6 +116,14 @@ section{padding-block:104px}
 
 /* life gallery */
 .life{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:260px 260px;gap:16px}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gal figure{margin:0;border-radius:18px;overflow:hidden;background:var(--mist);position:relative}
+.gal figure div{aspect-ratio:3/2;background-size:cover;background-position:center 25%;transition:transform 1.2s var(--ease)}
+.gal figure:hover div{transform:scale(1.05)}
+.gal figcaption{padding:14px 16px 16px;font-size:15px;line-height:1.45}
+.gal figcaption b{display:block;font-size:16px;margin-bottom:2px}
+@media (max-width:860px){.gal{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.gal{grid-template-columns:1fr}}
 .life figure{margin:0;border-radius:22px;overflow:hidden;position:relative;background:var(--mist)}
 .life figure div{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s var(--ease)}
 .life figure:hover div{transform:scale(1.07)}
@@ -584,6 +592,26 @@ footer h4{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-tra
       <figure class="rv"><div role="img" aria-label="Serkan Kaplan mali tabloları incelerken" style='background-image:url("img/evrak.webp");background-position:55% 35%'></div></figure>
       <figure class="d rv"><div role="img" aria-label="Serkan Kaplan müşterisiyle görüşmede" style='background-image:url("img/gorusme.webp");background-position:42% 30%'></div></figure>
       <div class="life-note rv"><b>İşini sevenler, insanı da anlar.</b><p>Müşterilerimizle uzun yıllara yayılan ilişkilerimizin sırrı, rakamların arkasındaki insanı görmek.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ofis" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Ofisimizden kareler</span>
+      <h2>Her rakamın arkasında <i>güvenilir</i> bir ekip.</h2>
+    </div>
+    <div class="gal">
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Şirket toplantıları" style='background-image:url("img/yelek-toplanti.webp")'></div><figcaption><b>Şirket toplantıları</b>Yönetim ekibinizle bütçe, vergi ve büyüme planını birlikte konuşuruz.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Güvene dayalı iş birliği" style='background-image:url("img/tokalasma.webp")'></div><figcaption><b>Güvene dayalı iş birliği</b>Müşterilerimizin çoğuyla 10 yılı aşkın süredir birlikte çalışıyoruz.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Titiz kontrol" style='background-image:url("img/rapor.webp")'></div><figcaption><b>Titiz kontrol</b>Beyannameler gönderilmeden önce çok aşamalı kontrolden geçer.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Ücretsiz ön görüşme" style='background-image:url("img/sohbet.webp")'></div><figcaption><b>Ücretsiz ön görüşme</b>İşletmenizi dinler, size en uygun yol haritasını çıkarırız.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Ekip olarak yanınızdayız" style='background-image:url("img/toplanti3.webp")'></div><figcaption><b>Ekip olarak yanınızdayız</b>4 SMMM ve 1 iç denetçiden oluşan ekibimizle her konuda destek.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Dijital muhasebe" style='background-image:url("img/imac.webp")'></div><figcaption><b>Dijital muhasebe</b>e-Fatura, e-Defter ve e-Mükellef süreçleri hızlı ve şeffaf.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Karşıyaka ofisimizde" style='background-image:url("img/zeytin.webp")'></div><figcaption><b>Karşıyaka ofisimizde</b>Karşıyaka Tower’daki ofisimizde sizi ağırlamaktan memnuniyet duyarız.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Şirket kuruluşu" style='background-image:url("img/dosya.webp")'></div><figcaption><b>Şirket kuruluşu</b>Şahıs, limited ve anonim şirket kuruluşunu baştan sona yönetiriz.</figcaption></figure>
+      <figure class="rv"><div role="img" aria-label="SMMM Serkan Kaplan - Bize ulaşın" style='background-image:url("img/ayakta.webp")'></div><figcaption><b>Bize ulaşın</b>Ücretsiz ön görüşme için: <a href="tel:+905325155035">0532 515 50 35</a></figcaption></figure>
     </div>
   </div>
 </section>
