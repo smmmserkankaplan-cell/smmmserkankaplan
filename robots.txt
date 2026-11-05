@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://smmmserkankaplan-cell.github.io/smmmserkankaplan/sitemap.xml
