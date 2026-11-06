@@ -7,7 +7,7 @@ AYLAR = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","
 posts = sorted(json.loads((ROOT/"haberler/yazilar.json").read_text(encoding="utf-8")), key=lambda p: p["date"], reverse=True)
 def tr(d):
     y, m, g = map(int, d.split("-")); return f"{g} {AYLAR[m-1]} {y}"
-cards = "\n".join(f'''  <a class="card" href="{p.get("url") or p["slug"]+".html"}"><img src="../{p["image"]}" alt="" loading="lazy" width="1200" height="800"><div><span class="meta">{html.escape(p["tag"])} · <time datetime="{p["date"]}">{tr(p["date"])}</time></span><h3>{html.escape(p["title"])}</h3><p>{html.escape(p["summary"])}</p></div></a>''' for p in posts)
+cards = "\n".join(f'''  <a class="card" href="{p.get("url") or p["slug"]+".html"}"><img src="{p["image"] if p["image"].startswith("http") else "../"+p["image"]}" alt="" loading="lazy" width="1200" height="800"><div><span class="meta">{html.escape(p["tag"])} · <time datetime="{p["date"]}">{tr(p["date"])}</time></span><h3>{html.escape(p["title"])}</h3><p>{html.escape(p["summary"])}</p></div></a>''' for p in posts)
 page = f'''<!doctype html>
 <html lang="tr">
 <head>
@@ -47,3 +47,29 @@ urls = [(BASE, latest), (BASE+"haberler/", latest)] + [(f'{BASE}haberler/{p["slu
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls) + "\n</urlset>\n"
 (ROOT/"sitemap.xml").write_text(sm, encoding="utf-8")
 print(f"{len(posts)} yazi, sitemap {len(urls)} adres")
+
+# Ana sayfa #haberler izgarasi: en yeni 6 yazi (2 blok: buyuk + 2 yan kart)
+def link(p): return p.get("url") or f'haberler/{p["slug"]}.html'
+def img(p): return p["image"] if p["image"].startswith("http") else p["image"]
+def card(p, big):
+    cls = "post big rv" if big else "post rv"
+    para = f'\n        <p>{html.escape(p["summary"])}</p>' if big else ""
+    return f'''<a class="{cls}" href="{link(p)}">
+        <img class="bg" src="{img(p)}" alt="{html.escape(p["tag"])} yazısının kapak görseli" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
+        <span class="tag">{html.escape(p["tag"])}</span>
+        <time datetime="{p["date"]}">{tr(p["date"])}</time>
+        <h3>{html.escape(p["title"])}</h3>{para}
+      </a>'''
+top = posts[:6]
+blocks = []
+for i in range(0, len(top), 3):
+    g = top[i:i+3]
+    side = "\n      ".join(card(x, False) for x in g[1:])
+    mb = ' style="margin-bottom:22px"' if i == 0 and len(top) > 3 else ""
+    blocks.append(f'<div class="news"{mb}>\n      {card(g[0], True)}\n      <div class="news-side">\n      {side}\n      </div>\n    </div>')
+ip = ROOT/"index.html"; s = ip.read_text(encoding="utf-8")
+a, b = "<!-- HABERLER:BASLA (haberler/olustur.py uretir) -->", "<!-- HABERLER:BITIR -->"
+i, j = s.index(a) + len(a), s.index(b)
+s = s[:i] + "\n    " + "\n    ".join(blocks) + "\n    " + s[j:]
+ip.write_text(s, encoding="utf-8")
+print("ana sayfa izgarasi guncellendi")
