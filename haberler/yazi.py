@@ -34,7 +34,7 @@ lead, body, cta, src = "", [], "", []
 for sec in sections:
     head, _, rest = sec.partition("\n"); head = head.strip()
     if head.startswith("Giriş A"): lead = rest.strip()
-    elif head.startswith("Giriş"): continue
+    elif re.match(r"Giriş [A-Z]\b", head): continue
     elif head.startswith("Kaynaklar"): src = re.findall(r"- (.+?): (https?://\S+)", rest)
     elif "yardımcı" in head or "yanınızdayız" in head:
         cta = "\n".join(l for l in rest.strip().splitlines() if l.strip() and not l.startswith("**") and not l.startswith("Ofis:"))
