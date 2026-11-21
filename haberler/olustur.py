@@ -7,7 +7,7 @@ AYLAR = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","
 posts = sorted(json.loads((ROOT/"haberler/yazilar.json").read_text(encoding="utf-8")), key=lambda p: p["date"], reverse=True)
 def tr(d):
     y, m, g = map(int, d.split("-")); return f"{g} {AYLAR[m-1]} {y}"
-cards = "\n".join(f'''  <a class="card" href="{p.get("url") or p["slug"]+".html"}"><img src="{p["image"] if p["image"].startswith("http") else "../"+p["image"]}" alt="" loading="lazy" width="1200" height="800"><div><span class="meta">{html.escape(p["tag"])} · <time datetime="{p["date"]}">{tr(p["date"])}</time></span><h3>{html.escape(p["title"])}</h3><p>{html.escape(p["summary"])}</p></div></a>''' for p in posts)
+cards = "\n".join(f'''  <a class="card" href="{p.get("url") or p["slug"]+".html"}"><img src="{p["image"] if p["image"].startswith("http") else "../"+p["image"]}" alt="{html.escape(p.get('alt', ''))}" loading="lazy" width="1200" height="800"><div><span class="meta">{html.escape(p["tag"])} · <time datetime="{p["date"]}">{tr(p["date"])}</time></span><h3>{html.escape(p["title"])}</h3><p>{html.escape(p["summary"])}</p></div></a>''' for p in posts)
 page = f'''<!doctype html>
 <html lang="tr">
 <head>
@@ -55,7 +55,7 @@ def card(p, big):
     cls = "post big rv" if big else "post rv"
     para = f'\n        <p>{html.escape(p["summary"])}</p>' if big else ""
     return f'''<a class="{cls}" href="{link(p)}">
-        <img class="bg" src="{img(p)}" alt="{html.escape(p["tag"])} yazısının kapak görseli" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
+        <img class="bg" src="{img(p)}" alt="{html.escape(p.get('alt', p['tag'] + ' yazısının kapak görseli'))}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover">
         <span class="tag">{html.escape(p["tag"])}</span>
         <time datetime="{p["date"]}">{tr(p["date"])}</time>
         <h3>{html.escape(p["title"])}</h3>{para}
